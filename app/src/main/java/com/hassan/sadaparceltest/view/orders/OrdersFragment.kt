@@ -4,29 +4,27 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
+import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
+import androidx.fragment.app.viewModels
 import com.hassan.sadaparceltest.R
+import com.hassan.sadaparceltest.databinding.FragmentOrdersBinding
 import com.hassan.sadaparceltest.viewmodel.orders.OrdersViewModel
 
 class OrdersFragment : Fragment() {
 
-    private lateinit var ordersViewModel: OrdersViewModel
+    private val ordersViewModel by viewModels<OrdersViewModel>()
+    private lateinit var binding: FragmentOrdersBinding
 
     override fun onCreateView(
             inflater: LayoutInflater,
             container: ViewGroup?,
             savedInstanceState: Bundle?
     ): View? {
-        ordersViewModel =
-                ViewModelProvider(this).get(OrdersViewModel::class.java)
-        val root = inflater.inflate(R.layout.fragment_orders, container, false)
-        val textView: TextView = root.findViewById(R.id.text_notifications)
-        ordersViewModel.text.observe(viewLifecycleOwner, Observer {
-            textView.text = it
-        })
-        return root
+
+        binding = DataBindingUtil.inflate(inflater,R.layout.fragment_orders, container, false)
+        binding.ordersViewModel = ordersViewModel
+        binding.lifecycleOwner = this
+        return binding.root
     }
 }
