@@ -18,9 +18,14 @@ class HomeInstrumentedTest {
     @Rule
     @JvmField
     var activityRule: ActivityScenarioRule<MainActivity> = ActivityScenarioRule(MainActivity::class.java)
-    @Test
-    fun navigateToCart(){
 
-        onView(withId(R.id.navigation_cart)).check(matches(isDisplayed()))
+    @Test
+    fun navigationToCart_isCorrect(){
+        onView(withId(R.id.navigation_cart)).check(matches(isClickable()))
+    }
+
+    @Test
+    fun navigationToOrders_isCorrect(){
+        onView(withId(R.id.navigation_orders)).check(matches(isClickable()))
     }
 }
