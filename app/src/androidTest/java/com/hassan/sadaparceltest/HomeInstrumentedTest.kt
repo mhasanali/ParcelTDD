@@ -28,4 +28,16 @@ class HomeInstrumentedTest {
     fun navigationToOrders_isCorrect(){
         onView(withId(R.id.navigation_orders)).check(matches(isClickable()))
     }
+
+    @Test
+    fun navigationToCart_fragmentChange_isCorrect(){
+        onView(withId(R.id.navigation_cart)).perform(click())
+        onView(withText("This is cart Fragment")).check(matches(isDisplayed()))
+    }
+
+    @Test
+    fun navigationToOrders_fragmentChange_isCorrect(){
+        onView(withId(R.id.navigation_orders)).perform(click())
+        onView(withText("This is orders Fragment")).check(matches(isDisplayed()))
+    }
 }
