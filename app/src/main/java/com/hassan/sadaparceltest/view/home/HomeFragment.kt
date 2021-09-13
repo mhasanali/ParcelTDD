@@ -10,7 +10,10 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.hassan.sadaparceltest.R
+import com.hassan.sadaparceltest.adapters.ItemsAdapter
 import com.hassan.sadaparceltest.databinding.FragmentHomeBinding
 import com.hassan.sadaparceltest.viewmodel.home.HomeViewModel
 
@@ -30,5 +33,17 @@ class HomeFragment : Fragment() {
         binding.lifecycleOwner = this
 
         return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        setupRecycler()
+    }
+
+    fun setupRecycler(){
+        val adapter = ItemsAdapter()
+        binding.recyclerHomeProducts.adapter = adapter
+        binding.recyclerHomeProducts.layoutManager = GridLayoutManager(requireContext(),2,RecyclerView.VERTICAL,false)
+        adapter.submitList(homeViewModel.getItems())
     }
 }
