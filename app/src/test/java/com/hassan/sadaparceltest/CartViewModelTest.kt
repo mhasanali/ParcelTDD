@@ -25,8 +25,8 @@ class CartViewModelTest {
         assertNotNull(cartViewModel.getItems())
     }
 
-//    @Test
-//    fun viewModel_providesDataList_greaterThanZero(){
-//        Assert.assertTrue(cartViewModel.getItems().isNotEmpty())
-//    }
+    @Test
+    fun viewModel_providesDataList_greaterThanZero(){
+        Assert.assertTrue(cartViewModel.getItems().isNotEmpty())
+    }
 }

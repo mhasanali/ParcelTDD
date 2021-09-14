@@ -12,7 +12,7 @@ class CartViewModel : ViewModel() {
     }
     val text: LiveData<String> = _text
 
-    fun getItems(): List<Product>? {
+    fun getItems(): List<Product> {
         return mutableListOf()
     }
 }
