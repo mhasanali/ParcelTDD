@@ -44,6 +44,6 @@ class CartFragment : Fragment() {
         binding.recyclerCartProducts.adapter = adapter
         binding.recyclerCartProducts.layoutManager = GridLayoutManager(requireContext(),1,
             RecyclerView.VERTICAL,false)
-//        adapter.submitList(cartViewModel.getItems())
+        adapter.submitList(cartViewModel.getItems())
     }
 }
