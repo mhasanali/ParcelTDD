@@ -29,4 +29,8 @@ class HomeViewModelTest {
        assertTrue(homeViewModel.getItems().isNotEmpty())
     }
 
+    @Test
+    fun viewModel_providesAtleastTwentyItems(){
+        assertTrue(homeViewModel.getItems().size >= 20)
+    }
 }
