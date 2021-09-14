@@ -2,11 +2,13 @@ package com.hassan.sadaparceltest
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.hassan.sadaparceltest.viewmodel.home.HomeViewModel
-import org.junit.Assert.assertEquals
-import org.junit.Assert.assertNotNull
+import org.junit.Assert.*
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
+import org.junit.Assert.*
+import org.hamcrest.CoreMatchers.*
+
 
 class HomeViewModelTest {
      private lateinit var homeViewModel: HomeViewModel
@@ -24,7 +26,7 @@ class HomeViewModelTest {
 
     @Test
     fun viewModel_providesDataList_greaterThanZero(){
-        assertEquals(homeViewModel.getItems().isNotEmpty(),homeViewModel.getItems().size)
+       assertTrue(homeViewModel.getItems().isNotEmpty())
     }
 
 }

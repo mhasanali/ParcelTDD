@@ -15,7 +15,10 @@ class HomeViewModel : ViewModel() {
 
     fun getItems(): List<Product>{
         val itemList = mutableListOf<Product>()
-
+            val product = Product(3, Item("1","White square","12 pcs",12.00))
+            for (i in 0..9){
+                itemList.add(product)
+            }
             return itemList
 
     }
