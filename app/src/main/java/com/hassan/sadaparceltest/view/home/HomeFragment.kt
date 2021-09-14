@@ -4,16 +4,13 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.hassan.sadaparceltest.R
-import com.hassan.sadaparceltest.adapters.ItemsAdapter
+import com.hassan.sadaparceltest.adapters.ItemsAdapterHome
 import com.hassan.sadaparceltest.databinding.FragmentHomeBinding
 import com.hassan.sadaparceltest.viewmodel.home.HomeViewModel
 
@@ -41,7 +38,7 @@ class HomeFragment : Fragment() {
     }
 
     fun setupRecycler(){
-        val adapter = ItemsAdapter()
+        val adapter = ItemsAdapterHome()
         binding.recyclerHomeProducts.adapter = adapter
         binding.recyclerHomeProducts.layoutManager = GridLayoutManager(requireContext(),2,RecyclerView.VERTICAL,false)
         adapter.submitList(homeViewModel.getItems())
