@@ -22,4 +22,9 @@ class HomeViewModelTest {
         assertNotNull(homeViewModel.getItems())
     }
 
+    @Test
+    fun viewModel_providesDataList_greaterThanZero(){
+        assertEquals(homeViewModel.getItems().isNotEmpty(),homeViewModel.getItems().size)
+    }
+
 }
