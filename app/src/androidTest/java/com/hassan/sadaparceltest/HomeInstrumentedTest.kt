@@ -50,10 +50,10 @@ class HomeInstrumentedTest {
 
     @Test
     fun products_displayed_isCorrect(){
-        val scrollingLength = 6
+        val length = 6
 
         onView(withId(R.id.recycler_home_products))
-            .perform(RecyclerViewActions.actionOnItemAtPosition<ItemsViewHolder>(scrollingLength, click()));
+            .perform(actionOnItemAtPosition<ItemsViewHolder>(length, click()));
 
         ;//            .perform(actionOnItemAtPosition<RecyclerView.ViewHolder>(9, scrollTo()))
 //            .check(matches(hasDescendant(withText("With square"))))
