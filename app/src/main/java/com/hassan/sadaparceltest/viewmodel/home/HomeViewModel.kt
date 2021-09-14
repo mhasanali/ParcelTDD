@@ -13,7 +13,10 @@ class HomeViewModel : ViewModel() {
     }
     val text: LiveData<String> = _text
 
-    fun getItems(): List<Product>? {
-        return null
+    fun getItems(): List<Product>{
+        val itemList = mutableListOf<Product>()
+
+            return itemList
+
     }
 }
