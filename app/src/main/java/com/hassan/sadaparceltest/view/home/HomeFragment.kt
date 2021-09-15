@@ -50,6 +50,6 @@ class HomeFragment : Fragment(),HomeItemListener {
     }
 
     override fun itemOnClick(item: Product) {
-        cartViewModel.productsInCart.add(item)
+        cartViewModel.addItemToCart(item)
     }
 }

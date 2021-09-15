@@ -15,6 +15,10 @@ class CartSharedViewModel : ViewModel() {
     val productsInCart = mutableListOf<Product>()
     val text: LiveData<String> = _text
 
+    fun addItemToCart(item: Product){
+
+    }
+
     fun getItems(): List<Product> {
         val itemList = mutableListOf<Product>()
         val product = Product(3, Item("1","White square","12 pcs",12.00))

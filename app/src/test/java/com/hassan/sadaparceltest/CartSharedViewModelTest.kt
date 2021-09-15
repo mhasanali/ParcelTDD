@@ -1,9 +1,12 @@
 package com.hassan.sadaparceltest
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
+import com.hassan.sadaparceltest.model.cart.Item
+import com.hassan.sadaparceltest.model.cart.Product
 import com.hassan.sadaparceltest.viewmodel.cart.CartSharedViewModel
 import org.junit.Assert
 import org.junit.Assert.assertNotNull
+import org.junit.Assert.assertTrue
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
@@ -31,6 +34,9 @@ class CartSharedViewModelTest {
 
     @Test
     fun viewModel_isAddingProductToCart(){
-
+        val listLengthBeforeAdding = cartSharedViewModel.productsInCart.size
+        val mockItem = Product(3, Item("1","White square","12 pcs",12.00))
+        cartSharedViewModel.addItemToCart(mockItem)
+        assertTrue(cartSharedViewModel.productsInCart.size + 1 == listLengthBeforeAdding)
     }
 }
