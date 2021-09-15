@@ -8,13 +8,15 @@ import com.hassan.sadaparceltest.model.cart.Product
 
 class CartSharedViewModel : ViewModel() {
 
+    //region Global Variables
     private val _text = MutableLiveData<String>().apply {
         value = "Cart"
     }
-
-    val productsInCart = mutableListOf<Product>()
     val text: LiveData<String> = _text
+    val productsInCart = mutableListOf<Product>()
+    //endregion
 
+    //region View Model Methods
     fun addItemToCart(item: Product){
         for (product in productsInCart){
             if(product.item.id == item.item.id){
@@ -33,6 +35,5 @@ class CartSharedViewModel : ViewModel() {
         }
         return itemList
     }
-
-
+    //endregion
 }

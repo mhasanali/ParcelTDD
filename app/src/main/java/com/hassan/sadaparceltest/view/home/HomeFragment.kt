@@ -20,15 +20,18 @@ import com.hassan.sadaparceltest.viewmodel.home.HomeViewModel
 
 class HomeFragment : Fragment(),HomeItemListener {
 
+    //region Global Variables
     private val homeViewModel by viewModels<HomeViewModel>()
     private val cartViewModel by navGraphViewModels<CartSharedViewModel>(R.id.mobile_navigation)
     private lateinit var binding: FragmentHomeBinding
+    //endregion
 
+    //region Lifecycle Methods
     override fun onCreateView(
             inflater: LayoutInflater,
             container: ViewGroup?,
             savedInstanceState: Bundle?
-    ): View? {
+    ): View {
 
          binding = DataBindingUtil.inflate(inflater,R.layout.fragment_home, container, false)
         binding.homeViewModel = homeViewModel
@@ -41,15 +44,20 @@ class HomeFragment : Fragment(),HomeItemListener {
         super.onViewCreated(view, savedInstanceState)
         setupRecycler()
     }
+    //endregion
 
-    fun setupRecycler(){
+    //region Class Level Methods
+    private fun setupRecycler(){
         val adapter = ItemsAdapterHome(this)
         binding.recyclerHomeProducts.adapter = adapter
         binding.recyclerHomeProducts.layoutManager = GridLayoutManager(requireContext(),2,RecyclerView.VERTICAL,false)
         adapter.submitList(homeViewModel.getItems())
     }
+    //endregion
 
+    //region External Methods
     override fun itemOnClick(item: Product) {
         cartViewModel.addItemToCart(item)
     }
+    //endregion
 }

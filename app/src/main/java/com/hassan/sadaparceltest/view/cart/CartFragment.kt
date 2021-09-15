@@ -26,7 +26,7 @@ class CartFragment : Fragment() {
             inflater: LayoutInflater,
             container: ViewGroup?,
             savedInstanceState: Bundle?
-    ): View? {
+    ): View {
 
         binding = DataBindingUtil.inflate(layoutInflater,R.layout.fragment_cart,container,false)
         binding.cartViewModel = cartViewModel
@@ -40,6 +40,7 @@ class CartFragment : Fragment() {
     }
     //endregion
 
+    //region Class Level Methods
     fun setupRecycler(){
         val adapter = ItemsAdapterCart()
         binding.recyclerCartProducts.adapter = adapter
@@ -48,6 +49,7 @@ class CartFragment : Fragment() {
         adapter.submitList(cartViewModel.productsInCart)
 
     }
+    //endregion
 
 
 }

@@ -11,12 +11,10 @@ import com.hassan.sadaparceltest.utilities.viewholders.ItemsViewHolderHome
 class ItemsAdapterHome(private val listener: HomeItemListener):ListAdapter<Product,ItemsViewHolderHome>(ItemDiffUtilsHome()) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemsViewHolderHome {
         val binding = ItemProductCarouselBinding.inflate(LayoutInflater.from(parent.context),parent,false)
-
         return ItemsViewHolderHome(binding)
     }
 
     override fun onBindViewHolder(holderHome: ItemsViewHolderHome, position: Int) {
         holderHome.bind(getItem(position),listener)
-//        listener.itemOnClick(getItem(position))
     }
 }
