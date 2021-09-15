@@ -5,7 +5,7 @@
     <data>
         <variable
             name="cartViewModel"
-            type="com.hassan.sadaparceltest.viewmodel.cart.CartViewModel" />
+            type="com.hassan.sadaparceltest.viewmodel.cart.CartSharedViewModel" />
     </data>
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -28,7 +28,9 @@
             android:id="@+id/recycler_cart_products"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_margin="8dp"
+            tools:listitem="@layout/item_cart"
+            android:layout_marginHorizontal="8dp"
+            android:layout_marginBottom="60dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/text_cart" />
     </androidx.constraintlayout.widget.ConstraintLayout>

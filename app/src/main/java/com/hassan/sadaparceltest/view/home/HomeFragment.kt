@@ -7,16 +7,21 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.navGraphViewModels
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.hassan.sadaparceltest.HomeItemListener
 import com.hassan.sadaparceltest.R
 import com.hassan.sadaparceltest.adapters.ItemsAdapterHome
 import com.hassan.sadaparceltest.databinding.FragmentHomeBinding
+import com.hassan.sadaparceltest.model.cart.Product
+import com.hassan.sadaparceltest.viewmodel.cart.CartSharedViewModel
 import com.hassan.sadaparceltest.viewmodel.home.HomeViewModel
 
-class HomeFragment : Fragment() {
+class HomeFragment : Fragment(),HomeItemListener {
 
     private val homeViewModel by viewModels<HomeViewModel>()
+    private val cartViewModel by navGraphViewModels<CartSharedViewModel>(R.id.mobile_navigation)
     private lateinit var binding: FragmentHomeBinding
 
     override fun onCreateView(
@@ -38,9 +43,13 @@ class HomeFragment : Fragment() {
     }
 
     fun setupRecycler(){
-        val adapter = ItemsAdapterHome()
+        val adapter = ItemsAdapterHome(this)
         binding.recyclerHomeProducts.adapter = adapter
         binding.recyclerHomeProducts.layoutManager = GridLayoutManager(requireContext(),2,RecyclerView.VERTICAL,false)
         adapter.submitList(homeViewModel.getItems())
+    }
+
+    override fun itemOnClick(item: Product) {
+        cartViewModel.productsInCart.add(item)
     }
 }

@@ -6,18 +6,19 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
+import androidx.navigation.navGraphViewModels
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.hassan.sadaparceltest.HomeItemListener
 import com.hassan.sadaparceltest.R
 import com.hassan.sadaparceltest.adapters.ItemsAdapterCart
-import com.hassan.sadaparceltest.adapters.ItemsAdapterHome
 import com.hassan.sadaparceltest.databinding.FragmentCartBinding
-import com.hassan.sadaparceltest.viewmodel.cart.CartViewModel
+import com.hassan.sadaparceltest.model.cart.Product
+import com.hassan.sadaparceltest.viewmodel.cart.CartSharedViewModel
 
 class CartFragment : Fragment() {
 
-    private val cartViewModel by viewModels<CartViewModel>()
+    private val cartViewModel by navGraphViewModels<CartSharedViewModel>(R.id.mobile_navigation)
     private lateinit var binding: FragmentCartBinding
 
     //region Lifecycle Methods
@@ -44,6 +45,9 @@ class CartFragment : Fragment() {
         binding.recyclerCartProducts.adapter = adapter
         binding.recyclerCartProducts.layoutManager = GridLayoutManager(requireContext(),1,
             RecyclerView.VERTICAL,false)
-        adapter.submitList(cartViewModel.getItems())
+        adapter.submitList(cartViewModel.productsInCart)
+
     }
+
+
 }

@@ -6,11 +6,13 @@ import androidx.lifecycle.ViewModel
 import com.hassan.sadaparceltest.model.cart.Item
 import com.hassan.sadaparceltest.model.cart.Product
 
-class CartViewModel : ViewModel() {
+class CartSharedViewModel : ViewModel() {
 
     private val _text = MutableLiveData<String>().apply {
         value = "Cart"
     }
+
+    val productsInCart = mutableListOf<Product>()
     val text: LiveData<String> = _text
 
     fun getItems(): List<Product> {
@@ -21,4 +23,6 @@ class CartViewModel : ViewModel() {
         }
         return itemList
     }
+
+
 }

@@ -1,32 +1,36 @@
 package com.hassan.sadaparceltest
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
-import com.hassan.sadaparceltest.viewmodel.cart.CartViewModel
-import com.hassan.sadaparceltest.viewmodel.home.HomeViewModel
+import com.hassan.sadaparceltest.viewmodel.cart.CartSharedViewModel
 import org.junit.Assert
 import org.junit.Assert.assertNotNull
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 
-class CartViewModelTest {
-    private lateinit var cartViewModel: CartViewModel
+class CartSharedViewModelTest {
+    private lateinit var cartSharedViewModel: CartSharedViewModel
 
     @get:Rule
     var instantExecutorRule = InstantTaskExecutorRule()
 
     @Before
     fun resolveDependencies(){
-        cartViewModel = CartViewModel()
+        cartSharedViewModel = CartSharedViewModel()
     }
 
     @Test
     fun viewModel_providesData(){
-        assertNotNull(cartViewModel.getItems())
+        assertNotNull(cartSharedViewModel.getItems())
     }
 
     @Test
     fun viewModel_providesDataList_greaterThanZero(){
-        Assert.assertTrue(cartViewModel.getItems().isNotEmpty())
+        Assert.assertTrue(cartSharedViewModel.getItems().isNotEmpty())
+    }
+
+    @Test
+    fun viewModel_isAddingProductToCart(){
+
     }
 }

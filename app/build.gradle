@@ -55,4 +55,6 @@ dependencies {
     androidTestImplementation('com.android.support.test.espresso:espresso-contrib:3.0.2')
     testImplementation "androidx.arch.core:core-testing:2.1.0"
 
+    implementation "android.arch.persistence.room:runtime:1.1.1"
+
 }
