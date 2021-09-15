@@ -16,7 +16,13 @@ class CartSharedViewModel : ViewModel() {
     val text: LiveData<String> = _text
 
     fun addItemToCart(item: Product){
-    productsInCart.add(item)
+        for (product in productsInCart){
+            if(product.item.id == item.item.id){
+                //show error or replace the quantity as per the use case
+                return
+            }
+        }
+        productsInCart.add(item)
     }
 
     fun getItems(): List<Product> {
