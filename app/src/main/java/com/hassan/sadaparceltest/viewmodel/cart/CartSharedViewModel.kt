@@ -16,7 +16,7 @@ class CartSharedViewModel : ViewModel() {
     val text: LiveData<String> = _text
 
     fun addItemToCart(item: Product){
-
+    productsInCart.add(item)
     }
 
     fun getItems(): List<Product> {

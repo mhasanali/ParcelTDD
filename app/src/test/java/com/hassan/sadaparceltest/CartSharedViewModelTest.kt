@@ -34,9 +34,10 @@ class CartSharedViewModelTest {
 
     @Test
     fun viewModel_isAddingProductToCart(){
-        val listLengthBeforeAdding = cartSharedViewModel.productsInCart.size
+        val expectedListLength = cartSharedViewModel.productsInCart.size + 1
         val mockItem = Product(3, Item("1","White square","12 pcs",12.00))
         cartSharedViewModel.addItemToCart(mockItem)
-        assertTrue(cartSharedViewModel.productsInCart.size + 1 == listLengthBeforeAdding)
+        val actualListLength = cartSharedViewModel.productsInCart.size
+        assert(expectedListLength == actualListLength)
     }
 }
