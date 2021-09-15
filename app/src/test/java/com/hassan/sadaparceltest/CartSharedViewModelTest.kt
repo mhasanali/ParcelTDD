@@ -40,4 +40,17 @@ class CartSharedViewModelTest {
         val actualListLength = cartSharedViewModel.productsInCart.size
         assert(expectedListLength == actualListLength)
     }
+
+    @Test
+    fun viewModel_isPreventing_sameItemsToBeAdded(){
+        val expectedListLength = cartSharedViewModel.productsInCart.size + 1
+        val mockItemA = Product(3, Item("1","White square","12 pcs",12.00))
+        val mockItemB = Product(3, Item("1","White square","12 pcs",12.00))
+        cartSharedViewModel.addItemToCart(mockItemA)
+        cartSharedViewModel.addItemToCart(mockItemB)
+        val actualListLength = cartSharedViewModel.productsInCart.size
+        assert(expectedListLength == actualListLength)
+
+
+    }
 }
